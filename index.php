@@ -253,7 +253,7 @@
     // Проверяем меняются ли ранее сохраненные данные или отправляются новые.
     if ($log) {
       $stmt = $db->prepare("UPDATE form_data SET fio = ?, phone = ?, email = ?, birthday = ?, gender = ?, biography = ? WHERE user_id = ?");
-      $stmt->execute([$fio, $phone, $email, strtotime($birthday), $gender, $biography, $uid]);
+      $stmt->execute([$fio, $phone, $email,date('Y-m-d', strtotime($birthday)), $gender, $biography, $uid]);
 
       $stmt = $db->prepare("DELETE FROM form_data_lang WHERE id_form = ?");
       $stmt->execute([$_SESSION['form_id']]);
