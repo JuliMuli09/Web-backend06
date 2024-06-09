@@ -285,7 +285,7 @@
         $user_id = $db->lastInsertId();
 
         $stmt = $db->prepare("INSERT INTO form_data (user_id, fio, phone, email, birthday, gender, biography) VALUES (?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$user_id, $fio, $phone, $email, strtotime($birthday), $gender, $biography]);
+        $stmt->execute([$user_id, $fio, $phone, $email,date('Y-m-d', strtotime($birthday)), $gender, $biography]);
         $fid = $db->lastInsertId();
 
         $stmt1 = $db->prepare("INSERT INTO form_data_lang (id_form, id_lang) VALUES (?, ?)");
